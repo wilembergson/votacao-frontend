@@ -14,14 +14,21 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       backgroundColor: {
-        "azul-escuro":"#004B5B",
-        "azul-claro":"#5DABA7",
-        "laranja":"#F36F31",
-        "beje-claro":"#E9DFD9",
-        "beje-escuro":"#DED2CC"
+        "azul-escuro": "#004B5B",
+        "azul-claro": "#5DABA7",
+        "laranja": "#F36F31",
+        "beje-claro": "#E9DFD9",
+        "beje-escuro": "#DED2CC"
+      },
+      textColor: {
+        "azul-escuro": "#004B5B",
+        "azul-claro": "#5DABA7",
+        "laranja": "#F36F31",
+        "beje-claro": "#E9DFD9",
+        "beje-escuro": "#DED2CC"
       },
       fontFamily: {
-        "barlow":['"Barlow Condensed"', 'sans-serif'],
+        "barlow": ['"Barlow Condensed"', 'sans-serif'],
         "roboto": ['"Roboto"', 'sans-serif']
       }
     },
