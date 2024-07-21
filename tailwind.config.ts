@@ -20,6 +20,13 @@ const config: Config = {
         "beje-claro": "#E9DFD9",
         "beje-escuro": "#DED2CC"
       },
+      borderColor: {
+        "azul-escuro": "#004B5B",
+        "azul-claro": "#5DABA7",
+        "laranja": "#F36F31",
+        "beje-claro": "#E9DFD9",
+        "beje-escuro": "#DED2CC"
+      },
       textColor: {
         "azul-escuro": "#004B5B",
         "azul-claro": "#5DABA7",
@@ -30,6 +37,9 @@ const config: Config = {
       fontFamily: {
         "barlow": ['"Barlow Condensed"', 'sans-serif'],
         "roboto": ['"Roboto"', 'sans-serif']
+      },
+      boxShadowColor: {
+        "padrao": "rgba(0,_0,_0,_0.24)_0px_3px_8px"
       }
     },
   },
