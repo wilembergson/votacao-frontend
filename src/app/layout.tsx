@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { GlobalContextProvider } from "@/contexts/Global";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,7 +24,11 @@ export default function RootLayout({
           href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
         />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <GlobalContextProvider>
+          {children}
+        </GlobalContextProvider>
+      </body>
     </html>
   );
 }

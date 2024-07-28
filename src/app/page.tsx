@@ -8,7 +8,6 @@ import Login from '@/components/Login';
 import Signin from '@/components/Signin';
 import Spinner from '@/components/Spinner';
 
-
 export default function Root() {
   const [form, setForm] = useState('login')
   const [loading, setLoading] = useState(false)
@@ -30,7 +29,7 @@ export default function Root() {
               ONLINE
             </h1>
           </section>
-          <div className="flex absolute z-20 flex-col bg-azul-escuro w-full h-full justify-center items-center  opacity-90" />
+          <div className="flex absolute z-20 flex-col bg-azul-escuro w-full h-full justify-center items-center opacity-90" />
           <img className="flex w-full absolute z-10 h-screen" src="/votando.jpg" alt="" />
         </div>
         <div className="flex justify-center items-center w-1/2 h-screen">
