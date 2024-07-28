@@ -4,10 +4,11 @@ import 'aos/dist/aos.css'
 import Aos from 'aos'
 import { useEffect, useState } from "react";
 import { MdOutlineHowToVote } from "react-icons/md";
-import Signin from './components/Signin';
-import Login from './components/Login';
+import Login from '@/components/Login';
+import Signin from '@/components/Signin';
 
-export default function Home() {
+
+export default function Root() {
   const [form, setForm] = useState('login')
 
   useEffect(() => {

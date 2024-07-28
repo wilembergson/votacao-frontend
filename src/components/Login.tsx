@@ -1,17 +1,19 @@
-import api, { LoginType } from "@/api/api"
+
 import { ChangeEvent, useState } from "react"
 import alerts from "../utils/alerts"
+import { useRouter } from "next/navigation"
+import api, { LoginType } from "@/api/api"
 
 type Props = {
     changeForm: (data: string) => void
 }
 
 export default function Login({ changeForm }: Props) {
-
     const loginDefault: LoginType = {
         login: '',
         password: ''
     }
+    const navigator = useRouter()
     const [login, setLogin] = useState<LoginType>(loginDefault)
 
     function handleChange(e: ChangeEvent<HTMLInputElement>) {
@@ -23,8 +25,9 @@ export default function Login({ changeForm }: Props) {
         e.preventDefault()
         try {
             const response = await api.login(login)
-            alert(response.data.token)
-            //setLogin(loginDefault)
+            localStorage.setItem('token', response.data.token)
+            //alert(response.data.token)
+            navigator.push('/home')
         } catch (error: any) {
             console.log(error)
             alerts.error(error.response.data.mensagem)

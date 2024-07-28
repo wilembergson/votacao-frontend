@@ -1,5 +1,6 @@
 import axios from "axios"
 import API_URL from "./url"
+import { headers } from "next/headers"
 
 export type NewUser = {
     name: string
@@ -21,9 +22,20 @@ async function login(data: LoginType) {
     return await axios.post(`${API_URL}/auth/login`, data)
 }
 
+async function userInfo(token: string) {
+    return await axios.get(`${API_URL}/usuario/informacoes`,
+        {
+            headers: {
+                authorization: token
+            }
+        }
+    )
+}
+
 const api = {
     saveUser,
-    login
+    login,
+    userInfo
 }
 
 export default api

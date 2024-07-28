@@ -1,6 +1,6 @@
 import api, { NewUser } from "@/api/api"
+import alerts from "@/utils/alerts"
 import { ChangeEvent, useState } from "react"
-import alerts from "../utils/alerts"
 
 type Props = {
     changeForm: (data: string) => void
