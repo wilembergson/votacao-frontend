@@ -6,9 +6,10 @@ import api, { LoginType } from "@/api/api"
 
 type Props = {
     changeForm: (data: string) => void
+    loading: (data: boolean) => void
 }
 
-export default function Login({ changeForm }: Props) {
+export default function Login({ changeForm, loading }: Props) {
     const loginDefault: LoginType = {
         login: '',
         password: ''
@@ -24,12 +25,12 @@ export default function Login({ changeForm }: Props) {
     async function doLigin(e: any) {
         e.preventDefault()
         try {
+            loading(true)
             const response = await api.login(login)
             localStorage.setItem('token', response.data.token)
-            //alert(response.data.token)
             navigator.push('/home')
         } catch (error: any) {
-            console.log(error)
+            loading(false)
             alerts.error(error.response.data.mensagem)
         }
     }

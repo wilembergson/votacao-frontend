@@ -2,6 +2,7 @@
 import api from "@/api/api"
 import { ReactNode, useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
+import Spinner from "./Spinner"
 
 type Props = {
     children: ReactNode
@@ -35,7 +36,7 @@ export default function PrivateComponent({ children }: Props) {
 
     return (
         <>
-            {userInfo ? children : <h1>Carregando...</h1>}
+            {userInfo ? children : <Spinner />}
         </>
     )
 }

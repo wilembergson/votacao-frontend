@@ -4,9 +4,10 @@ import { ChangeEvent, useState } from "react"
 
 type Props = {
     changeForm: (data: string) => void
+    loading: (data: boolean) => void
 }
 
-export default function Signin({ changeForm }: Props) {
+export default function Signin({ changeForm, loading }: Props) {
     const userDefault: NewUser = {
         name: '',
         cpf: '',
@@ -23,11 +24,12 @@ export default function Signin({ changeForm }: Props) {
     async function save(e: any) {
         e.preventDefault()
         try {
+            loading(true)
             const response = await api.saveUser(newUser)
             alerts.success(response.data.mensagem)
             setNewUser(userDefault)
         } catch (error: any) {
-            console.log(error)
+            loading(false)
             alerts.error(error.response.data.mensagem)
         }
     }

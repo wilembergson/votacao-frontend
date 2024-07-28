@@ -6,10 +6,12 @@ import { useEffect, useState } from "react";
 import { MdOutlineHowToVote } from "react-icons/md";
 import Login from '@/components/Login';
 import Signin from '@/components/Signin';
+import Spinner from '@/components/Spinner';
 
 
 export default function Root() {
   const [form, setForm] = useState('login')
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     Aos.init({ duration: 500 })
@@ -32,13 +34,17 @@ export default function Root() {
           <img className="flex w-full absolute z-10 h-screen" src="/votando.jpg" alt="" />
         </div>
         <div className="flex justify-center items-center w-1/2 h-screen">
-          <form className="flex items-center flex-col bg-white w-1/2 h-fit py-10 border-[1px] border-laranja" data-aos="zoom-in">
-            {form === 'login' ?
-              <Login changeForm={setForm} />
-              :
-              <Signin changeForm={setForm} />
-            }
-          </form>
+          {!loading ?
+            <form className="flex items-center flex-col bg-white w-1/2 h-fit py-10 border-[1px] border-laranja" data-aos="zoom-in">
+              {form === 'login' ?
+                <Login changeForm={setForm} loading={setLoading} />
+                :
+                <Signin changeForm={setForm} loading={setLoading} />
+              }
+            </form>
+            :
+            <Spinner />
+          }
         </div>
       </div>
     </main>
