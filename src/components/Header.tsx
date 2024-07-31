@@ -2,9 +2,12 @@ import { useGlobalContext } from "@/contexts/Global";
 import { FaUserCircle } from "react-icons/fa";
 import { MdOutlineHowToVote, MdOutlinePowerSettingsNew } from "react-icons/md";
 import HeaderItem from "./HeaderItem";
+import { useState } from "react";
+import LogoutModal from "./logout-modal";
 
 export default function Header() {
     const { user } = useGlobalContext()
+    const [showLogout, setShowLogout] = useState(false)
 
     return (
         <header className="flex w-full justify-between bg-azul-escuro p-6 font-barlow">
@@ -22,12 +25,15 @@ export default function Header() {
                     </h2>
                 </HeaderItem>
                 <HeaderItem>
-                    <MdOutlinePowerSettingsNew />
-                    <h2 className="mx-1">
-                        Sair
-                    </h2>
+                    <div className="flex items-center" onClick={() => setShowLogout(true)}>
+                        <MdOutlinePowerSettingsNew />
+                        <h2 className="mx-1">
+                            Sair
+                        </h2>
+                    </div>
                 </HeaderItem>
             </div>
+            <LogoutModal isVisible={showLogout} onClick={setShowLogout} />
         </header>
     )
 }
