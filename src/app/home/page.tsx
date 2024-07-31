@@ -1,4 +1,5 @@
 'use client'
+import Header from "@/components/Header";
 import PrivateComponent from "@/components/PrivateComponent";
 import { useGlobalContext } from "@/contexts/Global";
 
@@ -7,7 +8,7 @@ export default function Home() {
 
     return (
         <PrivateComponent>
-            <h1>Seja bem vindo(a) {user?.name}</h1>
+            <Header />
         </PrivateComponent>
     )
 }
