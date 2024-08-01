@@ -12,7 +12,6 @@ function success(message: string) {
     Swal.fire({
         title: message,
         icon: "success",
-        timer: 2500
     });
 }
 

@@ -25,7 +25,7 @@ export default function Signin({ changeForm, loading }: Props) {
         e.preventDefault()
         try {
             loading(true)
-            const response = await api.saveUser(newUser)
+            const response = await api.salvarUsuario(newUser)
             alerts.success(response.data.mensagem)
             setNewUser(userDefault)
         } catch (error: any) {

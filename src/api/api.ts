@@ -1,6 +1,7 @@
 import axios from "axios"
 import API_URL from "./url"
 import { headers } from "next/headers"
+import { CampanhaItem } from "@/components/Campanha"
 
 export type NewUser = {
     name: string
@@ -14,7 +15,18 @@ export type LoginType = {
     password: string
 }
 
-async function saveUser(data: NewUser) {
+
+
+function config() {
+    const token: any = localStorage.getItem('token')
+    return {
+        headers: {
+            authorization: token
+        }
+    }
+}
+
+async function salvarUsuario(data: NewUser) {
     return await axios.post(`${API_URL}/usuario/cadastrar`, data)
 }
 
@@ -22,20 +34,19 @@ async function login(data: LoginType) {
     return await axios.post(`${API_URL}/auth/login`, data)
 }
 
-async function userInfo(token: string) {
-    return await axios.get(`${API_URL}/usuario/informacoes`,
-        {
-            headers: {
-                authorization: token
-            }
-        }
-    )
+async function usuarioInfo(token: string) {
+    return await axios.get(`${API_URL}/usuario/informacoes`, config())
+}
+
+async function listarCampanhas() {
+    return await axios.get(`${API_URL}/campanha/listar`, config())
 }
 
 const api = {
-    saveUser,
+    salvarUsuario,
     login,
-    userInfo
+    usuarioInfo,
+    listarCampanhas
 }
 
 export default api

@@ -16,7 +16,7 @@ export default function PrivateComponent({ children }: Props) {
     async function authenticate() {
         try {
             const token = localStorage.getItem('token')
-            const promise = await api.userInfo(token!)
+            const promise = await api.usuarioInfo(token!)
             setUser(promise.data)
         } catch (error: any) {
             navigate.push('/')
@@ -29,7 +29,7 @@ export default function PrivateComponent({ children }: Props) {
     }, [])
 
     return (
-        <main>
+        <main className="flex min-h-screen flex-col items-center bg-beje-claro">
             {user ? children : <Spinner />}
         </main>
     )
