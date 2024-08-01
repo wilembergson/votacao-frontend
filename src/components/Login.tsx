@@ -28,7 +28,7 @@ export default function Login({ changeForm, loading }: Props) {
             loading(true)
             const response = await api.login(login)
             localStorage.setItem('token', response.data.token)
-            navigator.push('/home')
+            navigator.push('/home/usuario')
         } catch (error: any) {
             loading(false)
             alerts.error(error.response.data.mensagem)
