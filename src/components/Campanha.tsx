@@ -1,3 +1,5 @@
+import DataCampanha from "./DataCampanha"
+
 export type CampanhaItem = {
     id: string
     titulo: string
@@ -24,6 +26,10 @@ export default function Campanha({ campanha }: Props) {
             <h2 className="flex font-barlow text-laranja text-xl text-justify">
                 {campanha.descricao}
             </h2>
+            <section className="mt-4">
+                <DataCampanha titulo="INÍCIO: " data={campanha.inicio_votacao} />
+                <DataCampanha titulo="FIM: " data={campanha.fim_votacao} />
+            </section>
         </section>
     )
 }
