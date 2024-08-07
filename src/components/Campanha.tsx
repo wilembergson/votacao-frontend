@@ -1,3 +1,4 @@
+import { useRouter } from "next/navigation"
 import DataCampanha from "./DataCampanha"
 
 export type CampanhaItem = {
@@ -17,9 +18,12 @@ type Props = {
 
 export default function Campanha({ campanha }: Props) {
 
+    const navigation = useRouter()
+
     return (
         <section className="flex items-center flex-col bg-white w-1/4 h-fit p-10 m-4 border-[1px] border-laranja
-         hover:border-azul-escuro duration-300 cursor-pointer">
+         hover:border-azul-escuro duration-300 cursor-pointer"
+            onClick={() => navigation.push(`/campanha/${campanha.id}`)}>
             <h1 className="flex text-4xl text-azul-claro font-barlow mb-4 text-center">
                 {campanha.titulo}
             </h1>

@@ -42,11 +42,16 @@ async function listarCampanhas() {
     return await axios.get(`${API_URL}/campanha/listar`, config())
 }
 
+async function obterCampanhaPorId(id: string) {
+    return await axios.get(`${API_URL}/campanha/${id}`, config())
+}
+
 const api = {
     salvarUsuario,
     login,
     usuarioInfo,
-    listarCampanhas
+    listarCampanhas,
+    obterCampanhaPorId
 }
 
 export default api
