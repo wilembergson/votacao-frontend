@@ -1,10 +1,12 @@
 'use client'
 import api from "@/api/api"
+import Candidato from "@/components/Candidato"
 import Header from "@/components/Header"
 import PrivateComponent from "@/components/PrivateComponent"
 import alerts from "@/utils/alerts"
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
+import { IoIosArrowBack } from "react-icons/io"
 
 type Campanha = {
     id: string
@@ -48,21 +50,26 @@ export default function Campanha({
     return (
         <PrivateComponent>
             <Header />
-            <h2>{campanha?.titulo}</h2>
-            <h2>{campanha?.descricao}</h2>
-            <section className="flex w-3/4  justify-between bg-azul-claro text-azul-escuro my-10">
-                {campanha?.candidatos.map(item => {
-                    return (
-                        <div className="flex flex-col items-center py-8">
-                            <h2>{item.nome}</h2>
-                            <h2>{item.numero}</h2>
-                        </div>
-                    )
-                })}
-            </section>
-            <button onClick={() => navigation.push('/home/usuario')}>
-                Voltar
-            </button>
+            <div className="flex flex-col w-1/2">
+                <section className="flex flex-col items-start mt-10 mb-4">
+                    <h2 className="flex text-6xl font-barlow font-bold text-azul-escuro">
+                        {campanha?.titulo}
+                    </h2>
+                    <div className="flex w-72 h-4 bg-laranja mb-6" />
+                    <h2 className="flex font-barlow font-bold text-2xl text-laranja">
+                        {campanha?.descricao}
+                    </h2>
+                </section>
+
+                <section className="flex w-full  justify-between text-azul-escuro my-10 ">
+                    {campanha?.candidatos.map(item => <Candidato candidato={item} />)}
+                </section>
+                <button className="flex items-center font-barlow text-2xl text-laranja bg-azul-escuro w-min px-4 py-2 hover:opacity-85 duration-300"
+                    onClick={() => navigation.push('/home/usuario')}>
+                    <IoIosArrowBack />
+                    Voltar
+                </button>
+            </div>
         </PrivateComponent>
     )
 }
