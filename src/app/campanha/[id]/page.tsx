@@ -62,7 +62,7 @@ export default function Campanha({
                 </section>
 
                 <section className="flex w-full  justify-between text-azul-escuro my-10 ">
-                    {campanha?.candidatos.map(item => <Candidato candidato={item} />)}
+                    {campanha?.candidatos.map(item => <Candidato candidato={item} id_campanha={campanha.id} />)}
                 </section>
                 <button className="flex items-center font-barlow text-2xl text-laranja bg-azul-escuro w-min px-4 py-2 hover:opacity-85 duration-300"
                     onClick={() => navigation.push('/home/usuario')}>

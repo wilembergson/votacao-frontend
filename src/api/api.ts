@@ -15,7 +15,10 @@ export type LoginType = {
     password: string
 }
 
-
+export type VotoData = {
+    id_campanha: string
+    id_candidato: string
+}
 
 function config() {
     const token: any = localStorage.getItem('token')
@@ -46,12 +49,17 @@ async function obterCampanhaPorId(id: string) {
     return await axios.get(`${API_URL}/campanha/${id}`, config())
 }
 
+async function votar(name: string, data: VotoData) {
+    return await axios.post(`${API_URL}/voto/registrar/${name}`, data, config())
+}
+
 const api = {
     salvarUsuario,
     login,
     usuarioInfo,
     listarCampanhas,
-    obterCampanhaPorId
+    obterCampanhaPorId,
+    votar
 }
 
 export default api
