@@ -14,9 +14,10 @@ export type CandidatoType = {
 type Props = {
     candidato: CandidatoType
     id_campanha: string
+    setComprovante: (value: any) => void
 }
 
-export default function Candidato({ candidato, id_campanha }: Props) {
+export default function Candidato({ candidato, id_campanha, setComprovante }: Props) {
 
     const [showConfirmarVoto, setShowConfirmarVoto] = useState(false)
 
@@ -37,6 +38,7 @@ export default function Candidato({ candidato, id_campanha }: Props) {
                 change={setShowConfirmarVoto}
                 id_campanha={id_campanha}
                 id_candidato={candidato.id}
+                setComprovante={setComprovante}
             />
         </>
     )

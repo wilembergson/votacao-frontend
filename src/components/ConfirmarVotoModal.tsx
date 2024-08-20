@@ -12,9 +12,10 @@ type Props = {
     change: (value: boolean) => void
     id_campanha: string
     id_candidato: string
+    setComprovante: (value: any) => void
 }
 
-export default function ConfirmarVotoModal({ isVisible, change, id_campanha, id_candidato }: Props) {
+export default function ConfirmarVotoModal({ isVisible, change, id_campanha, id_candidato, setComprovante }: Props) {
     const router = useRouter()
     const [loading, setLoading] = useState<boolean>(false)
     const [senha, setSenha] = useState('')
@@ -22,7 +23,8 @@ export default function ConfirmarVotoModal({ isVisible, change, id_campanha, id_
     async function votar() {
         try {
             const promise = await api.votar(senha, { id_campanha, id_candidato })
-            alerts.success(promise.data.mensagem)
+            alerts.success('Voto registrado')
+            setComprovante(promise.data)
             change(false)
         } catch (error: any) {
             alerts.error(error.response.data.mensagem)
@@ -36,7 +38,7 @@ export default function ConfirmarVotoModal({ isVisible, change, id_campanha, id_
                     <h1 className="font-principal font-black text-3xl flex-wrap w-3/4 text-center text-laranja my-4">
                         Digite sua senha para confirmar o voto
                     </h1>
-                    <input className="border-[1px] border-azul-claro mb-10"
+                    <input className="border-[1px] border-azul-claro text-azul-claro p-2 mb-10"
                         type="password"
                         value={senha}
                         onChange={e => setSenha(e.target.value)}
